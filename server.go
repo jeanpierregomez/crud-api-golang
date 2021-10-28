@@ -26,7 +26,7 @@ var (
 func main() {
 	defer config.CloseDatabaseConnection(db)
 	r := gin.Default()
-
+	r.SetTrustedProxies([]string{"*"})
 	authRoutes := r.Group("api/auth")
 	{
 		authRoutes.POST("/login", authController.Login)
